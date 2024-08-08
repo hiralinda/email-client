@@ -1,0 +1,38 @@
+.compose-body {
+    min-height: 250px
+}
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+#sidebar {
+    background-color: #eff6e0;
+    padding: 20px;
+}
+#main-content {
+    background-color: #eff6e0;
+    flex-grow: 1;
+    padding: 20px;
+}
+.menu-button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+#emails-view, #email-view, #compose-view {
+    display: none;
+  }
+.email {
+   
+    padding: 10px;
+    cursor: pointer;
+    }
+    
+.email:hover {
+    background-color: #aec3b0;
+    }
+    
+.sender, .subject, .timestamp {
+    display: inline-block;
+    margin-right: 10px;
+}

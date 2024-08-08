@@ -1,0 +1,87 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+<style>
+    .btn:hover {
+        outline: 2px solid #aec3b0;
+    }
+    @media (max-width: 767px) {
+        #sidebar {
+            text-align: center;
+        }
+        #sidebar .btn {
+            font-size: 14px;
+        }
+    }
+    
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div id="sidebar" class="col-12 col-md-3">
+            <h2 class="text-center" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">HiraMail</h2>
+            <hr>
+            <div class="d-flex flex-column">
+                <button class="btn btn-sm menu-button w-100 mb-2" id="inbox">
+                    <i class="bi bi-envelope-open"></i> Inbox
+                </button>
+                <button class="btn btn-sm menu-button w-100 mb-2" id="compose">
+                    <i class="bi bi-pencil-square"></i> Compose
+                </button>
+                <button class="btn btn-sm menu-button w-100 mb-2" id="sent">
+                    <i class="bi bi-send"></i> Sent
+                </button>
+                <button class="btn btn-sm menu-button w-100 mb-2" id="archived">
+                    <i class="bi bi-archive"></i> Archived
+                </button>
+                <a class="btn btn-sm menu-button w-100" href="{% url 'logout' %}" id="logout">
+                    <i class="bi bi-box-arrow-right"></i> Log Out
+                </a>
+            </div>
+            <div style="text-align: center;"><small class="text-muted">Logged in as: {{ request.user.email }}</small></div>
+            <hr>
+        </div>
+        
+        <div id="main-content" class="col-12 col-md-9">
+            <div id="message-container" class="alert alert-success" style="display: none;"></div>
+            <div id="emails-view">
+                <!-- This is where your emails will be displayed -->
+            </div>
+            <div id="email-view" style="display: none;">
+                <!-- This is where email details will be displayed -->
+            </div>
+        
+            <div id="compose-view">
+                <h3 style="text-align: center">New Email</h3>
+                <form id="compose-form">
+                    <div class="form-group">
+                        <label for="compose-from">From:</label>
+                        <input id="compose-from" disabled class="form-control" value="{{ request.user.email }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="compose-recipients">To:</label>
+                        <input id="compose-recipients" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="compose-subject">Subject:</label>
+                        <input class="form-control" id="compose-subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="compose-body">Body:</label>
+                        <textarea class="form-control" id="compose-body" placeholder="Body" style="min-height: 250px"></textarea>
+                    </div>
+                    <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+                    <div class="d-flex justify-content-end">
+                        <input type="submit" class="btn btn-primary mt-2"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
