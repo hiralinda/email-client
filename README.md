@@ -66,7 +66,7 @@ Before running the project, ensure you have the following installed:
 
 - **Frontend**: HTML, CSS (Bootstrap 5 CSS), JavaScript
 - **Backend**: Django
-- **Database**: SQLite (or any database configured for Django)
+- **Database**: SQLite3
 
 ## Future Improvements
 
